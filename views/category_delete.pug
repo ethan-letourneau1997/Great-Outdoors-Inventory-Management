@@ -1,0 +1,39 @@
+extends layout
+
+block content
+
+    h1.title-med.d-none.d-sm-block #{title}
+
+    div.delete-page
+
+
+      if category_items.length
+        div.one-col-container.one-col-container-category
+          p #[strong Name:] &nbsp;&nbsp; #{category.name}
+
+          //- p #[strong Remove this category from the following items before attempting to delete.]
+          p Remove this category from the following items before attempting to delete.
+
+        table.table.table-striped.supplier-table.category-delete-table
+          thead.thead.thead-med.thead-supplier
+            tr.head-row-supplier-list
+              th.table-head.bold Item
+              th.table-head.bold Description
+          tbody.tbody-med.supplier-tbody
+            each item in category_items
+              tr
+                td
+                  a(href=item.url) #{item.name}
+                td 
+                  p #{item.description}
+
+      else
+        div.one-col-container
+          p #[strong Name:] &nbsp;&nbsp; #{category.name}
+          p.bold.confirmation Are you sure you want to delete this Category?
+
+          form(method='POST' action='')
+            div.form-group
+              input#categoryid.form-control(type='hidden',name='categoryid', required='true', value=category._id )
+
+            button.btn.btn-primary(type='submit') Delete

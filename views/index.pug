@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1.title-med.d-none.d-sm-block=title
+  
+
+
+  if error
+    p Error getting content.
+  else
+
+    div.homepage-container-med.d-none.d-sm-block
+      div.outer-box-med
+        div.box-container-med
+          div #[strong Items:] !{data.item_count}
+          button.btn.btn-info(onclick="location.href='/catalog/items'") View
+        div.box-container-med
+          div #[strong Suppliers:] !{data.supplier_count}
+          button.btn.btn-info(onclick="location.href='/catalog/suppliers'") View
+        div.box-container-med
+          div #[strong Categories:] !{data.category_count}
+          button.btn.btn-info(onclick="location.href='/catalog/categories'") View
+
+    div.homepage-container-sm.d-block.d-sm-none
+      div.box-container-sm
+        div #[strong Items:] !{data.item_count}
+        button.btn.btn-info(onclick="location.href='/catalog/items'") View
+      div.box-container-sm
+        div #[strong Suppliers:] !{data.supplier_count}
+        button.btn.btn-info(onclick="location.href='/catalog/suppliers'") View
+      div.box-container-sm
+        div #[strong Categories:] !{data.category_count}
+        button.btn.btn-info(onclick="location.href='/catalog/categories'") View

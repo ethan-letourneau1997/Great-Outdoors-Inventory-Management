@@ -1,0 +1,114 @@
+extends layout
+
+block content
+
+  // Desktop 
+  h1.title-med.d-none.d-sm-block= title
+
+  div.form-div.d-none.d-sm-block 
+    form.item-form(method='POST' action='' )
+      div.form-group
+        label(for='name') Name:
+        input#name.form-control(type='text', placeholder='Name of item' name='name' required='true' value=(undefined===item ? '' : item.name) )
+      div.form-group
+        label(for='supplier') Supplier:
+        select#supplier.form-control(type='select' placeholder='Select supplier' name='supplier' required='true' )
+          - suppliers.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+          for supplier in suppliers
+            if item
+              //- Handle GET form, where item.supplier is an object, and POST form, where it is a string.
+              option(
+                value=supplier._id
+                selected=(
+                  supplier._id.toString()==item.supplier._id
+                  || supplier._id.toString()==item.supplier
+                ) ? 'selected' : false
+              ) #{supplier.name}
+            else
+              option(value=supplier._id) #{supplier.name}
+      div.form-group
+        label(for='summary') Description:
+        textarea#description.form-control(type='textarea', placeholder='Item Description' name='description' required='true') #{undefined===item ? '' : item.description}
+      div.form-group
+        label(for='price') Price:
+        input#price.form-control(type='double', placeholder='$' name='price' value=(undefined===item ? '' : item.price) required='true')
+      div.form-group
+      div.form-group
+        label(for='stock') Stock:
+        input#stock.form-control(type='number', placeholder='quantity' name='stock' value=(undefined===item ? '' : item.stock) required='true')
+      div.form-group
+        label Category:
+        div 
+          for category in categories
+            div(style='display: inline; padding-right:10px;')
+              input.checkbox-input(type='checkbox', name='category', id=category._id, value=category._id, checked=category.checked ) 
+              label(for=category._id) &nbsp;&nbsp;#{category.name}
+      div.form-group
+        label(for='image') Image URL:
+        input#url.form-control(type='string', placeholder='url of image' name='image' value=(undefined===item ? '' : decodeURIComponent(item.image).replace(/&#x2F;/gi,'/')) required='true')
+      button.btn.btn-success.update-submit(type='submit') Submit
+      a.btn.btn-info.cancel-butn(onclick="history.back()") Go Back
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
+
+  // Desktop 
+  div.form-div-sm.d-block.d-sm-none
+    form.item-form.item-form-sm(method='POST' action='' )
+      div.form-group
+        label(for='name') Name:
+        input#name.form-control(type='text', placeholder='Name of item' name='name' required='true' value=(undefined===item ? '' : item.name) )
+      div.form-group
+        label(for='supplier') Supplier:
+        select#supplier.form-control(type='select' placeholder='Select supplier' name='supplier' required='true' )
+          - suppliers.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+          for supplier in suppliers
+            if item
+              //- Handle GET form, where item.supplier is an object, and POST form, where it is a string.
+              option(
+                value=supplier._id
+                selected=(
+                  supplier._id.toString()==item.supplier._id
+                  || supplier._id.toString()==item.supplier
+                ) ? 'selected' : false
+              ) #{supplier.name}
+            else
+              option(value=supplier._id) #{supplier.name}
+      div.form-group
+        label(for='summary') Description:
+        textarea#description.form-control(type='textarea', placeholder='Item Description' name='description' required='true') #{undefined===item ? '' : item.description}
+      div.form-group
+        label(for='price') Price:
+        input#price.form-control(type='double', placeholder='$' name='price' value=(undefined===item ? '' : item.price) required='true')
+      div.form-group
+      div.form-group
+        label(for='stock') Stock:
+        input#stock.form-control(type='number', placeholder='quantity' name='stock' value=(undefined===item ? '' : item.stock) required='true')
+      div.form-group
+        div.dropup
+          button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Category Select
+          div(class="dropdown-menu cat-drop-menu" aria-labelledby="dropdownMenuButton")
+            for category in categories
+              div(style='display: inline-block; padding-right:10px;')
+                label(for=category._id) #{category.name}&nbsp;&nbsp;
+                input.checkbox-input(type='checkbox', name='category', id=category._id, value=category._id, checked=category.checked ) 
+                
+      div.form-group
+        label(for='image') Image URL:
+        input#url.form-control(type='string', placeholder='url of image' name='image' value=(undefined===item ? '' : decodeURIComponent(item.image).replace(/&#x2F;/gi,'/')) required='true')
+
+      div.form-butn-group
+        button.btn.btn-success.update-submit(type='submit') Submit
+        a.btn.btn-info.cancel-butn(onclick="history.back()") Go Back
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
+
+  
+
+
+    

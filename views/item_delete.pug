@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  
+    h1.title-med.d-none.d-sm-block=title
+    div.one-col-container
+      div.item-info-div
+        p #[strong Name:]&nbsp;&nbsp; 
+        p #{item.name}
+      div.item-info-div
+        p #[strong Supplier: ]
+        a(href=item.supplier.url) &nbsp;&nbsp; #{item.supplier.name}
+      div.item-info-div
+        p #[strong Description:]&nbsp;&nbsp; 
+        p #{item.description}
+      div.item-info-div
+        p #[strong Price:]&nbsp;&nbsp; 
+        p $#{item.price}
+      div.item-info-div
+        p #[strong Stock: ]&nbsp;&nbsp; 
+        p #{item.stock}
+      div.item-info-div
+        p #[strong Category:]&nbsp;&nbsp;
+        div
+          each val, index in item.category
+            a(href=val.url) #{val.name} 
+            if index < item.category.length - 1
+              |,&nbsp;&nbsp; 
+      
+      p.bold.confirmation Are you sure you want to delete this Item?
+      div.delete-butn-div
+        button.btn.btn-info.cancel-butn(onclick="history.back()") Cancel
+        form(method='POST' action='')
+          div.form-group
+            input#itemid.form-control(type='hidden',name='itemid', required='true', value=item._id )
+
+          button.btn.btn-danger.delete-butn(type='submit') Delete
+
+        

@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h1.title-med.d-none.d-sm-block #{title}
+  
+  div.delete-page
+
+    if supplier_items.length
+      div.one-col-container.one-col-container-supplier
+        p.delete-name #[strong Name:] &nbsp;&nbsp; #{supplier.name}
+        p #[strong Phone:] &nbsp;&nbsp; #{supplier.phone}
+
+        p.red Delete the following items before attempting to delete this supplier.
+
+      table.table.table-striped.supplier-table.supplier-delete-table
+        thead.thead.thead-med.thead-supplier
+          tr.head-row-supplier-list
+            th.table-head Item
+            th.table-head Description
+        tbody.tbody-med.supplier-tbody
+          each item in supplier_items
+            tr
+              td
+                a(href=item.url) #{item.name}
+              td #{item.description}
+
+    else
+      div.one-col-container.one-col-container-supplier
+        p.delete-name #[strong Name:] &nbsp;&nbsp; #{supplier.name}
+        p #[strong Phone:] &nbsp;&nbsp; #{supplier.phone}
+        p.bold.confirmation Are you sure you want to delete this Supplier?
+        div.delete-butn-div
+          button.btn.btn-info.cancel-butn(onclick="history.back()") Cancel
+          form(method='POST' action='')
+            div.form-group
+              input#supplierid.form-control(type='hidden',name='supplierid', required='true', value=supplier._id )
+
+            button.btn.btn-danger.delete-butn(type='submit') Delete

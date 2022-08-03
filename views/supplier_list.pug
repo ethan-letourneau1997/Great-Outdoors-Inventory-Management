@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1.title-med.d-none.d-sm-block= title
+
+  table.table.table-striped.supplier-table
+    thead.thead.thead-med.thead-supplier
+      tr.head-row-supplier-list
+        th.table-head.bold Supplier
+        th.table-head.bold Phone Number
+  
+    tbody.tbody-med.supplier-tbody
+      each supplier in supplier_list
+        tr.item-row
+          td.table-item.supplier-table-item
+            a(href=supplier.url) #{supplier.name}
+          td.table-item.supplier-table-item
+            p #{supplier.phone}
+
+      else
+        li There are no suppliers.

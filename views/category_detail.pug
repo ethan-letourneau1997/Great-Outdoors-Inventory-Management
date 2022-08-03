@@ -1,0 +1,66 @@
+extends layout
+
+block content
+
+  h1.title-med.d-none.d-sm-block Category: #{category.name}
+
+  div
+
+    table.table.table-striped.d-none.d-sm-block
+      thead.thead.thead-med
+        tr
+            th.table-head
+            th.table-head Product
+            th.table-head Supplier
+            th.table-head Price
+            th.table-head Stock
+
+      tbody.tbody-med.category-tbody-med.tbody-category-details
+        each item in category_items
+          tr.item-row
+            td.table-item
+              img.item-list-img(class="d-none d-sm-block" src=item.image===undefined ? 'https://res.cloudinary.com/eletourneau/image/upload/v1659309161/no-image-icon-0_d0lkqz.jpg' : decodeURIComponent(item.image).replace(/&#x2F;/gi,'/'))
+            td.table-item
+              a(href=item.url) #{item.name}
+            td.table-item
+              a #{item.supplier.name}
+            td.table-item
+              p #{item.price}
+            td.stock-td.table-item
+              p #{item.stock}
+
+        else
+          tr.item-row 
+            td.table-item
+              p This Category has no items.
+
+    table.table.table-striped.d-block.d-sm-none
+      thead.thead.thead-sm
+        tr
+            th.table-head.table-head-sm Product
+            th.table-head.table-head-sm Supplier
+            th.table-head.table-head-sm Price
+            th.table-head.table-head-sm Stock
+
+      tbody.tbody-sm.category-tbody-sm
+        each item in category_items
+          tr.item-row-sm
+            td.table-item
+              a(href=item.url) #{item.name}
+            td.table-item
+              a #{item.supplier.name}
+            td.table-item
+              p #{item.price}
+            td.stock-td.table-item
+              p #{item.stock}
+
+        else
+          tr.item-row 
+            td.table-item
+              p This Category has no items.
+
+  div.med-butn-div.category-butn-div
+    p
+      a.btn.btn-info(href=category.url+'/delete') Delete Category
+    p
+      a.btn.btn-info(href=category.url+'/update') Update Category

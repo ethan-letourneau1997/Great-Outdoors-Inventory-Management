@@ -1,0 +1,88 @@
+
+
+.tbody-category-details {
+    max-height: 78vh;
+    height: fit-content;
+}
+
+.category-form {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.277);
+    border-radius: 15px;
+    font-size: 1.1rem;
+}
+
+.category-form div {
+    display: flex;
+    align-items: center;
+}
+
+.category-form label {
+    margin: 0;
+}
+
+.category-delete-table {
+    border: 1px solid black;
+
+}
+
+.category-delete-table tbody {
+    height: fit-content;
+    max-height: 55vh;
+}
+
+.category-delete-table thead{
+    
+}
+
+.delete-page-text-container {
+    background-color: rgba(128, 128, 128, 0.277)
+}
+
+.delete-page {
+    padding: 10px;
+}
+
+    .delete-page th {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+    }
+
+    .delete-page td {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .delete-page p {
+        margin: 0;
+    }
+
+.category-tbody-sm {
+    max-height: 77vh !important;
+    height: fit-content;
+}
+
+.category-butn-div-sm {
+    padding-top: 7px;
+}
+
+.category-tbody {
+    max-height: 84vh;
+    display: grid !important;
+    height: fit-content;
+    width: 100%;
+}
+
+.category-table-item {
+    width: 100% !important;
+}
+
+.one-col-container-category {
+    max-height: 20vh;
+    height: fit-content;
+    margin: 10px;
+
+}

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1.title-med.d-none.d-sm-block= title
+
+  table.table.table-striped.supplier-table
+    thead.thead.thead-med.thead-supplier
+      tr.head-row-supplier-list
+        th.table-head.bold Category
+    tbody.tbody-med.category-tbody
+      each category in category_list
+        tr.item-row
+          td.table-item.categroy-table-item
+            a(href=category.url) #{category.name}
+            |  #{category.phone}
+
+      else
+        li There are no categories.

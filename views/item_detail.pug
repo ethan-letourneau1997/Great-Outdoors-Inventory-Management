@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  h1.title-med.d-none.d-sm-block Item Details
+
+  div.d-none.d-sm-block.item-med-container
+    div.item-details
+      p.name #[strong Name:]&nbsp;&nbsp; #{item.name}
+      p.supplier #[strong Supplier:]&nbsp;&nbsp;
+        a(href=item.supplier.url) #{item.supplier.name}
+      p.description #[strong Description:]&nbsp;&nbsp;  #{item.description}
+      p.price #[strong Price:]&nbsp;&nbsp;  $#{item.price}
+      p.stock #[strong Stock:]&nbsp;&nbsp;  #{item.stock}
+      p.category #[strong Category:]&nbsp;&nbsp;
+        each val, index in item.category
+          a(href=val.url) #{val.name}
+          if index < item.category.length - 1
+            |,
+
+      div.img-flex
+        img.item-detail-img(src=item.image===undefined ? 'https://res.cloudinary.com/eletourneau/image/upload/v1659309161/no-image-icon-0_d0lkqz.jpg' : decodeURIComponent(item.image).replace(/&#x2F;/gi,'/'))
+
+      
+      div.med-butn-div.item-butn-div
+        p
+          a(href=item.url+'/delete' class="btn btn-info  item-butn") Delete Item
+        p
+          a(href=item.url+'/update' class="btn btn-info  item-butn") Update Item
+
+  div.d-block.d-sm-none
+    div.item-details-sm
+      p.name-sm #[strong Name:]&nbsp;&nbsp; #{item.name}
+      p.description-sm #[strong Description:]&nbsp;&nbsp;  #{item.description}
+      p.price-sm #[strong Price:]&nbsp;&nbsp;  $#{item.price}
+      p.stock-sm #[strong Stock:]&nbsp;&nbsp;  #{item.stock}
+      p.supplier-sm #[strong Supplier:]&nbsp;&nbsp;
+        a(href=item.supplier.url) #{item.supplier.name}
+      p.category-sm #[strong Category:]&nbsp;&nbsp;
+        each val, index in item.category
+          a(href=val.url) #{val.name}
+          if index < item.category.length - 1
+            |,
+
+
+      img.item-detail-img(src=item.image===undefined ? 'https://res.cloudinary.com/eletourneau/image/upload/v1659309161/no-image-icon-0_d0lkqz.jpg' : decodeURIComponent(item.image).replace(/&#x2F;/gi,'/'))
+
+      
+      div.med-butn-div.item-butn-div.item-butn-div-sm
+        p
+          a(href=item.url+'/delete' class="btn btn-info") Delete Item
+        p
+          a(href=item.url+'/update' class="btn btn-info") Update Item
+
+
+
+
+
+

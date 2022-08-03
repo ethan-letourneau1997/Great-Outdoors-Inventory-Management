@@ -1,0 +1,73 @@
+  
+/* |  SUPPLIER LIST  | */
+
+.supplier-table {
+
+}
+
+.supplier-table thead {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+    .head-row-supplier-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr !important; 
+    }
+
+    .supplier-tbody tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .supplier-tbody td {
+        width: 100%;
+        border-bottom: .5px solid black;
+    }
+
+
+.supplier-details {
+    background-color: rgba(128, 128, 128, 0.277);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    height: 15vh;
+}
+
+.tbody-supplier-details {
+    height: fit-content;
+    max-height: 55vh !important;
+}
+
+.supplier-butn-div {
+    display: flex;
+    height: 6vh;
+    margin-top: 10px;
+
+}
+
+  /* Desktop View */
+  
+  /* Mobile View */
+
+  .supplier-tbody-sm {
+    max-height: 55vh;
+    height: fit-content;
+  }
+
+  .supplier-delete-table {
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+
+  .supplier-delete-table tbody {
+    height: fit-content;
+    max-height: 50vh;
+  }
+
+  .one-col-container-supplier {
+    margin: 10px;
+  }
+
+
+ 

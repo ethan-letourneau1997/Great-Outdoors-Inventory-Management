@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1.title-med.d-none.d-sm-block=title
+
+  div.one-col-container
+
+    form(method='POST' action='')
+      div.form-group
+        label(for='name') Name:
+        input#name.form-control(type='text' placeholder='Name (Company LLC)' name='name' required='true' value=(undefined===supplier ? '' : supplier.name))
+      div.form-group
+        label(for='phone') Phone Number:
+        input#phone.form-control(type='number' name='phone' value=(undefined===supplier ? '' : supplier.phone) )
+      button.btn.btn-success(type='submit') Submit
+      a.btn.btn-info.cancel-butn(onclick="history.back()") Cancel
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
