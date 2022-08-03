@@ -18,7 +18,7 @@ var mongoose = require('mongoose');
 
 // connect MongoDB to heroku
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:3001test',
+  process.env.MONGODB_URI || 'mongodb://localhost:3001/test',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
