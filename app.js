@@ -14,16 +14,20 @@ var app = express();
 //Set up mongoose connection
 // var mongoose = require('mongoose');
 // var mongoDB = 'mongodb+srv://eletourneau:yeezus420@cluster0.rfi5q.mongodb.net/?retryWrites=true&w=majority';
-// mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+
 
 // connect MongoDB to heroku
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:3001/test',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-);
+// mongoose.connect(
+//   process.env.MONGODB_URI || 'mongodb://localhost:3001/test',
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   },
+// );
+// Set up mongoose connection
+var dev_db_url = 'mongodb+srv://eletourneau:yeezus420@cluster0.rfi5q.mongodb.net/test?retryWrites=true&w=majority'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
