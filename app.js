@@ -12,7 +12,7 @@ const { default: mongoose } = require('mongoose');
 var app = express();
 
 //Set up mongoose connection
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 // var mongoDB = 'mongodb+srv://eletourneau:yeezus420@cluster0.rfi5q.mongodb.net/?retryWrites=true&w=majority';
 // mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 
