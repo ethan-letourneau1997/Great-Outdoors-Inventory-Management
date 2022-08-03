@@ -7,13 +7,24 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
+const { default: mongoose } = require('mongoose');
 
 var app = express();
 
 //Set up mongoose connection
-var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://eletourneau:yeezus420@cluster0.rfi5q.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+// var mongoose = require('mongoose');
+// var mongoDB = 'mongodb+srv://eletourneau:yeezus420@cluster0.rfi5q.mongodb.net/?retryWrites=true&w=majority';
+// mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+
+// connect MongoDB to heroku
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/test',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+);
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
