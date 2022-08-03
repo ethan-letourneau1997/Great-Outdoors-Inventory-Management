@@ -12,13 +12,13 @@ const { default: mongoose } = require('mongoose');
 var app = express();
 
 //Set up mongoose connection
-// var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 // var mongoDB = 'mongodb+srv://eletourneau:yeezus420@cluster0.rfi5q.mongodb.net/?retryWrites=true&w=majority';
 // mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 
 // connect MongoDB to heroku
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/test',
+  process.env.MONGODB_URI || 'mongodb://localhost:3001test',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
